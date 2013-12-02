@@ -4,24 +4,29 @@
 
 Free library for graphical Bond Graph modelling that contains common standard linear elements, sensors, and specific non-linear elements, especially for hydraulic networks.
 
+See also the file [Resources/Documentation/documentation_BG_nonlinear.pdf](https://github.com/modelica-3rdparty/BondGraph/raw/master/Resources/Documentation/documentation_BG_nonlinear.pdf)
+
 
 ## Current release
 
-Download [BondGraph v1.0 (2013-02-19)](https://github.com/modelica-3rdparty/BondGraph/archive/v1.0.zip)
+Download [BondGraph v1.1.0 (2013-12-02)](https://github.com/modelica-3rdparty/BondGraph/archive/v1.1.0.zip)
 
 #### Release notes
 
-* Version 1.0 (2013-02-19):
- * Initial release
+* [Version 1.1.0 (2013-12-02)](https://github.com/modelica-3rdparty/BondGraph/archive/v1.1.0.zip):
+  * Relicensed under LGPL
+  * Clean up of class names (following the convention of starting with a capital letter)
+* [Version 1.0.0 (2013-02-19)](https://github.com/modelica-3rdparty/BondGraph/archive/v1.0.0.zip):
+  * Initial release
 
 ## License
 Copyright (C) 2013 Ilja Alkov, Robin Diekmann
 
-BondGraph is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+BondGraph is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
-This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
 
-You should have received a copy of the [GNU General Public License](LICENSE) along with this program. If not, see http://www.gnu.org/licenses.
+You should have received a copy of the [GNU Lesser General Public License](LICENSE) along with this program. If not, see http://www.gnu.org/licenses.
 
 ## Development and contribution
 This software is developed an maintained by

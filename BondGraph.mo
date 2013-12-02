@@ -1,7 +1,7 @@
 within ;
 package BondGraph
 
-  model readme
+  model Readme
   extends Modelica.Icons.Information;
   annotation (Documentation(info="<html>
   <p>BondGraph is a free Bond Graph library for Modelica that supports 
@@ -9,16 +9,16 @@ package BondGraph
   Copyright (C) 2013 Ilja Alkov, Robin Diekmann
   <br><br>
   BondGraph is free software: you can redistribute it and/or modify it 
-  under the terms of the GNU General Public License as published by the 
+  under the terms of the GNU Lesser General Public License as published by the 
   Free Software Foundation, either version 3 of the License, or (at your 
   option) any later version.
   <br><br>
   This program is distributed in the hope that it will be useful, but 
   WITHOUT ANY WARRANTY; without even the implied warranty of 
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU 
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser 
   General Public License for more details.
   <br><br>
-  You should have received a copy of the GNU General Public License 
+  You should have received a copy of the GNU Lesser General Public License 
   along with this program. If not, see http://www.gnu.org/licenses.
   <br><br>
   <br><br>
@@ -27,19 +27,18 @@ package BondGraph
   mailto: ilja.alkov@fh-bielefeld.de, robin.diekmann@fh-bielefeld.de
   <br><br>
   University of Applied Sciences Bielefeld<br>
-  Department of Engineering and Mathematics<br>
-  Bielefeld<br>
-  Germany<br>
+  Institute of System Dynamics and Mechatronics<br>
+  Bielefeld, Germany<br>
   www.fh-bielefeld.de</p></html>"));
-  end readme;
+  end Readme;
 
-  package bg_linear
+  package BG_linear
 
-    package elements
+    package Elements
 
-      model c "compliance"
+      model C "compliance"
 
-        extends BondGraph.bg_linear.partial_models.port_x1;
+        extends BondGraph.BG_linear.Partial_models.Port_x1;
 
         parameter Real c = 1 "compliance parameter";
         parameter Real e_0 = 0 "initial effort";
@@ -66,11 +65,11 @@ package BondGraph
                 fillPattern=FillPattern.Solid,
                 lineColor={0,0,0},
                 textString="C")}));
-      end c;
+      end C;
 
-      model gy "gyrator"
+      model Gy "gyrator"
 
-        extends BondGraph.bg_linear.partial_models.port_x2;
+        extends BondGraph.BG_linear.Partial_models.Port_x2;
 
         parameter Real r = 1 "transformation parameter";
 
@@ -91,11 +90,11 @@ package BondGraph
                 fillPattern=FillPattern.Solid,
                 lineColor={0,0,0},
                 textString="GY")}));
-      end gy;
+      end Gy;
 
-      model i "inductance"
+      model I "inductance"
 
-        extends BondGraph.bg_linear.partial_models.port_x1;
+        extends BondGraph.BG_linear.Partial_models.Port_x1;
 
         parameter Real i = 1 "inductance parameter";
         parameter Real f_0 = 0 "initial flow";
@@ -122,17 +121,17 @@ package BondGraph
                 fillPattern=FillPattern.Solid,
                 lineColor={0,0,0},
                 textString="I")}));
-      end i;
+      end I;
 
-      model jone
+      model Jone
 
-        BondGraph.interfaces.port_p port_p[p]
+        BondGraph.Interfaces.Port_p port_p[p]
           annotation (
             Placement(
               transformation(
                 extent={{-100,-10},{-80,10}})));
 
-        BondGraph.interfaces.port_n port_n[n]
+        BondGraph.Interfaces.Port_n port_n[n]
           annotation (
             Placement(
               transformation(
@@ -168,17 +167,17 @@ package BondGraph
                 fillPattern=FillPattern.Solid,
                 lineColor={0,0,0},
                 textString="1")}));
-      end jone;
+      end Jone;
 
-      model jzero
+      model Jzero
 
-        BondGraph.interfaces.port_p port_p[p]
+        BondGraph.Interfaces.Port_p port_p[p]
           annotation (
             Placement(
               transformation(
                 extent={{-100,-10},{-80,10}})));
 
-        BondGraph.interfaces.port_n port_n[n]
+        BondGraph.Interfaces.Port_n port_n[n]
           annotation (
             Placement(
               transformation(
@@ -214,12 +213,12 @@ package BondGraph
                 fillPattern=FillPattern.Solid,
                 lineColor={0,0,0},
                 textString="0")}));
-      end jzero;
+      end Jzero;
 
-      model mc "modulated compliance"
+      model Mc "modulated compliance"
 
-        extends BondGraph.bg_linear.partial_models.port_x1;
-        extends BondGraph.bg_linear.partial_models.port_in_x1;
+        extends BondGraph.BG_linear.Partial_models.Port_x1;
+        extends BondGraph.BG_linear.Partial_models.Port_in_x1;
 
         Real c "compliance parameter";
         parameter Real e_0 = 0 "initial effort";
@@ -247,12 +246,12 @@ package BondGraph
                 fillPattern=FillPattern.Solid,
                 lineColor={0,0,0},
                 textString="MC")}));
-      end mc;
+      end Mc;
 
-      model mgy "modulated gyrator"
+      model Mgy "modulated gyrator"
 
-        extends BondGraph.bg_linear.partial_models.port_x2;
-        extends BondGraph.bg_linear.partial_models.port_in_x1;
+        extends BondGraph.BG_linear.Partial_models.Port_x2;
+        extends BondGraph.BG_linear.Partial_models.Port_in_x1;
 
         Real r "transformation parameter";
 
@@ -274,12 +273,12 @@ package BondGraph
                 fillPattern=FillPattern.Solid,
                 lineColor={0,0,0},
                 textString="MGY")}));
-      end mgy;
+      end Mgy;
 
-      model mi "modulated inductance"
+      model Mi "modulated inductance"
 
-        extends BondGraph.bg_linear.partial_models.port_x1;
-        extends BondGraph.bg_linear.partial_models.port_in_x1;
+        extends BondGraph.BG_linear.Partial_models.Port_x1;
+        extends BondGraph.BG_linear.Partial_models.Port_in_x1;
 
         Real i "inductance parameter";
         parameter Real f_0 = 0 "initial flow";
@@ -307,12 +306,12 @@ package BondGraph
                 fillPattern=FillPattern.Solid,
                 lineColor={0,0,0},
                 textString="MI")}));
-      end mi;
+      end Mi;
 
-      model mr "modulated resistance"
+      model Mr "modulated resistance"
 
-        extends BondGraph.bg_linear.partial_models.port_x1;
-        extends BondGraph.bg_linear.partial_models.port_in_x1;
+        extends BondGraph.BG_linear.Partial_models.Port_x1;
+        extends BondGraph.BG_linear.Partial_models.Port_in_x1;
 
         Real r "resistance parameter";
 
@@ -333,12 +332,12 @@ package BondGraph
                 fillPattern=FillPattern.Solid,
                 lineColor={0,0,0},
                 textString="MR")}));
-      end mr;
+      end Mr;
 
-      model mse "modulated effort source"
+      model Mse "modulated effort source"
 
-        extends BondGraph.bg_linear.partial_models.port_x1;
-        extends BondGraph.bg_linear.partial_models.port_in_x1;
+        extends BondGraph.BG_linear.Partial_models.Port_x1;
+        extends BondGraph.BG_linear.Partial_models.Port_in_x1;
 
         Real e_s "source effort";
 
@@ -359,12 +358,12 @@ package BondGraph
                 fillPattern=FillPattern.Solid,
                 lineColor={0,0,0},
                 textString="MSe")}));
-      end mse;
+      end Mse;
 
-      model msf "modulated flow source"
+      model Msf "modulated flow source"
 
-        extends BondGraph.bg_linear.partial_models.port_x1;
-        extends BondGraph.bg_linear.partial_models.port_in_x1;
+        extends BondGraph.BG_linear.Partial_models.Port_x1;
+        extends BondGraph.BG_linear.Partial_models.Port_in_x1;
 
         Real f_s "source flow";
 
@@ -385,12 +384,12 @@ package BondGraph
                 fillPattern=FillPattern.Solid,
                 lineColor={0,0,0},
                 textString="MSf")}));
-      end msf;
+      end Msf;
 
-      model mtf "modulated transformer"
+      model Mtf "modulated transformer"
 
-        extends BondGraph.bg_linear.partial_models.port_x2;
-        extends BondGraph.bg_linear.partial_models.port_in_x1;
+        extends BondGraph.BG_linear.Partial_models.Port_x2;
+        extends BondGraph.BG_linear.Partial_models.Port_in_x1;
 
         Real r "transformation parameter";
 
@@ -412,11 +411,11 @@ package BondGraph
                 fillPattern=FillPattern.Solid,
                 lineColor={0,0,0},
                 textString="MTF")}));
-      end mtf;
+      end Mtf;
 
-      model r "resistance"
+      model R "resistance"
 
-        extends BondGraph.bg_linear.partial_models.port_x1;
+        extends BondGraph.BG_linear.Partial_models.Port_x1;
 
         parameter Real r = 1 "resistance parameter";
 
@@ -436,11 +435,11 @@ package BondGraph
                 fillPattern=FillPattern.Solid,
                 lineColor={0,0,0},
                 textString="R")}));
-      end r;
+      end R;
 
-      model se "effort source"
+      model Se "effort source"
 
-        extends BondGraph.bg_linear.partial_models.port_x1;
+        extends BondGraph.BG_linear.Partial_models.Port_x1;
 
         parameter Real e_s = 0 "source effort";
 
@@ -460,11 +459,11 @@ package BondGraph
                 fillPattern=FillPattern.Solid,
                 lineColor={0,0,0},
                 textString="Se")}));
-      end se;
+      end Se;
 
-      model sf "flow source"
+      model Sf "flow source"
 
-        extends BondGraph.bg_linear.partial_models.port_x1;
+        extends BondGraph.BG_linear.Partial_models.Port_x1;
 
         parameter Real f_s = 0 "source flow";
 
@@ -484,11 +483,11 @@ package BondGraph
                 fillPattern=FillPattern.Solid,
                 lineColor={0,0,0},
                 textString="Sf")}));
-      end sf;
+      end Sf;
 
-      model tf "transformer"
+      model Tf "transformer"
 
-        extends BondGraph.bg_linear.partial_models.port_x2;
+        extends BondGraph.BG_linear.Partial_models.Port_x2;
 
         parameter Real r = 1 "transformation parameter";
 
@@ -509,14 +508,14 @@ package BondGraph
                 fillPattern=FillPattern.Solid,
                 lineColor={0,0,0},
                 textString="TF")}));
-      end tf;
-    end elements;
+      end Tf;
+    end Elements;
 
-    package sensors
+    package Sensors
 
-      model sensor_d_e
+      model Sensor_d_e
 
-        extends BondGraph.bg_linear.partial_models.sensor_interface;
+        extends BondGraph.BG_linear.Partial_models.Sensor_interface;
 
         Real y(stateSelect=StateSelect.avoid);
 
@@ -538,11 +537,11 @@ package BondGraph
                 fillPattern=FillPattern.Solid,
                 lineColor={0,0,0},
                 textString="der(e)")}));
-      end sensor_d_e;
+      end Sensor_d_e;
 
-      model sensor_d_f
+      model Sensor_d_f
 
-        extends BondGraph.bg_linear.partial_models.sensor_interface;
+        extends BondGraph.BG_linear.Partial_models.Sensor_interface;
 
         Real y(stateSelect=StateSelect.avoid);
 
@@ -564,11 +563,11 @@ package BondGraph
                 fillPattern=FillPattern.Solid,
                 lineColor={0,0,0},
                 textString="der(f)")}));
-      end sensor_d_f;
+      end Sensor_d_f;
 
-      model sensor_d_power
+      model Sensor_d_power
 
-        extends BondGraph.bg_linear.partial_models.sensor_interface;
+        extends BondGraph.BG_linear.Partial_models.Sensor_interface;
 
         Real y(stateSelect=StateSelect.avoid);
 
@@ -590,11 +589,11 @@ package BondGraph
                 fillPattern=FillPattern.Solid,
                 lineColor={0,0,0},
                 textString="der(P)")}));
-      end sensor_d_power;
+      end Sensor_d_power;
 
-      model sensor_i_e
+      model Sensor_i_e
 
-        extends BondGraph.bg_linear.partial_models.sensor_interface;
+        extends BondGraph.BG_linear.Partial_models.Sensor_interface;
 
         parameter Real y_0 = 0 "initial integral value";
 
@@ -620,11 +619,11 @@ package BondGraph
                 fillPattern=FillPattern.Solid,
                 lineColor={0,0,0},
                 textString="int(e)")}));
-      end sensor_i_e;
+      end Sensor_i_e;
 
-      model sensor_i_f
+      model Sensor_i_f
 
-        extends BondGraph.bg_linear.partial_models.sensor_interface;
+        extends BondGraph.BG_linear.Partial_models.Sensor_interface;
 
         parameter Real y_0 = 0 "initial integral value";
 
@@ -650,11 +649,11 @@ package BondGraph
                 fillPattern=FillPattern.Solid,
                 lineColor={0,0,0},
                 textString="int(f)")}));
-      end sensor_i_f;
+      end Sensor_i_f;
 
-      model sensor_i_power
+      model Sensor_i_power
 
-        extends BondGraph.bg_linear.partial_models.sensor_interface;
+        extends BondGraph.BG_linear.Partial_models.Sensor_interface;
 
         parameter Real y_0 = 0 "initial integral value";
 
@@ -680,11 +679,11 @@ package BondGraph
                 fillPattern=FillPattern.Solid,
                 lineColor={0,0,0},
                 textString="int(P)")}));
-      end sensor_i_power;
+      end Sensor_i_power;
 
-      model sensor_p_e
+      model Sensor_p_e
 
-        extends BondGraph.bg_linear.partial_models.sensor_interface;
+        extends BondGraph.BG_linear.Partial_models.Sensor_interface;
 
         Real y;
 
@@ -706,11 +705,11 @@ package BondGraph
                 fillPattern=FillPattern.Solid,
                 lineColor={0,0,0},
                 textString="e")}));
-      end sensor_p_e;
+      end Sensor_p_e;
 
-      model sensor_p_f
+      model Sensor_p_f
 
-        extends BondGraph.bg_linear.partial_models.sensor_interface;
+        extends BondGraph.BG_linear.Partial_models.Sensor_interface;
 
         Real y;
 
@@ -732,11 +731,11 @@ package BondGraph
                 fillPattern=FillPattern.Solid,
                 lineColor={0,0,0},
                 textString="f")}));
-      end sensor_p_f;
+      end Sensor_p_f;
 
-      model sensor_p_power
+      model Sensor_p_power
 
-        extends BondGraph.bg_linear.partial_models.sensor_interface;
+        extends BondGraph.BG_linear.Partial_models.Sensor_interface;
 
         Real y;
 
@@ -758,61 +757,61 @@ package BondGraph
                 fillPattern=FillPattern.Solid,
                 lineColor={0,0,0},
                 textString="P")}));
-      end sensor_p_power;
-    end sensors;
+      end Sensor_p_power;
+    end Sensors;
 
-    package partial_models
+    package Partial_models
 
-      partial model port_in_x1
+      partial model Port_in_x1
 
-        BondGraph.interfaces.port_in port_in
+        BondGraph.Interfaces.Port_in port_in
           annotation (
             Placement(
               transformation(
                 extent={{-10,80},{10,100}})));
 
-      end port_in_x1;
+      end Port_in_x1;
 
-      partial model port_out_x1
+      partial model Port_out_x1
 
-        BondGraph.interfaces.port_out port_out
+        BondGraph.Interfaces.Port_out port_out
           annotation (
             Placement(
               transformation(
                 extent={{-10,-100},{10,-80}})));
 
-      end port_out_x1;
+      end Port_out_x1;
 
-      partial model port_x1
+      partial model Port_x1
 
-        BondGraph.interfaces.port port
+        BondGraph.Interfaces.Port port
           annotation (
             Placement(
               transformation(
                 extent={{80,-10},{100,10}})));
 
-      end port_x1;
+      end Port_x1;
 
-      partial model port_x2
+      partial model Port_x2
 
-        BondGraph.interfaces.port_p port_p
+        BondGraph.Interfaces.Port_p port_p
           annotation (
             Placement(
               transformation(
                 extent={{-100,-10},{-80,10}})));
 
-        BondGraph.interfaces.port_n port_n
+        BondGraph.Interfaces.Port_n port_n
           annotation (
             Placement(
               transformation(
                 extent={{80,-10},{100,10}})));
 
-      end port_x2;
+      end Port_x2;
 
-      partial model sensor_interface
+      partial model Sensor_interface
 
-        extends BondGraph.bg_linear.partial_models.port_x2;
-        extends BondGraph.bg_linear.partial_models.port_out_x1;
+        extends BondGraph.BG_linear.Partial_models.Port_x2;
+        extends BondGraph.BG_linear.Partial_models.Port_out_x1;
 
         parameter Real gain = 1 "output gain";
 
@@ -825,18 +824,18 @@ package BondGraph
         port_p.e = e;
         port_p.f = f;
 
-      end sensor_interface;
-    end partial_models;
-  end bg_linear;
+      end Sensor_interface;
+    end Partial_models;
+  end BG_linear;
 
-  package bg_nonlinear
-    package hydraulics
+  package BG_nonlinear
+    package Hydraulics
 
-      model hc "hydraulic capacitance"
+      model Hc "hydraulic capacitance"
 
-        extends BondGraph.bg_linear.partial_models.port_x2;
+        extends BondGraph.BG_linear.Partial_models.Port_x2;
 
-        replaceable BondGraph.bg_nonlinear.media.hlp_iso_vg_32.hprop hprop
+        replaceable BondGraph.BG_nonlinear.Media.Hlp_iso_vg_32.Hprop hprop
           "properties of fluid, model of viscosity and density";
         parameter Real temp = 313.15 "temperature";
         parameter Real part_mass_air = 1.393e-6
@@ -882,13 +881,13 @@ package BondGraph
                 fillPattern=FillPattern.Solid,
                 lineColor={0,0,0},
                 textString="HC")}));
-      end hc;
+      end Hc;
 
-      model hi "hydraulic inductance"
+      model Hi "hydraulic inductance"
 
-        extends BondGraph.bg_linear.partial_models.port_x2;
+        extends BondGraph.BG_linear.Partial_models.Port_x2;
 
-        replaceable BondGraph.bg_nonlinear.media.hlp_iso_vg_32.hprop hprop
+        replaceable BondGraph.BG_nonlinear.Media.Hlp_iso_vg_32.Hprop hprop
           "properties of fluid, model of viscosity and density";
         parameter Real temp = 313.15 "temperature";
         parameter Real part_mass_air = 1.393e-6
@@ -932,13 +931,13 @@ package BondGraph
                 fillPattern=FillPattern.Solid,
                 lineColor={0,0,0},
                 textString="HI")}));
-      end hi;
+      end Hi;
 
-      model hr "hydraulic resistance, pipe friction"
+      model Hr "hydraulic resistance, pipe friction"
 
-        extends BondGraph.bg_linear.partial_models.port_x2;
+        extends BondGraph.BG_linear.Partial_models.Port_x2;
 
-        replaceable BondGraph.bg_nonlinear.media.hlp_iso_vg_32.hprop hprop
+        replaceable BondGraph.BG_nonlinear.Media.Hlp_iso_vg_32.Hprop hprop
           "properties of fluid, model of viscosity and density";
         parameter Real temp = 313.15 "temperature";
         parameter Real part_mass_air = 1.393e-6
@@ -1006,9 +1005,9 @@ package BondGraph
 
         /* colebrook white equation, alkov diekmann haaland approximation (2012) */
         lambda =
-          (64/(re+re_min*(1-tanh(re/re_min))))/(1+exp(4.39*(re-re_crit)/re_range))
+          (64/(re+re_min-re_min*tanh(re/re_min)))*0.5*(-tanh(2.5*(re-re_crit)/re_range)+1)
           +
-          (((-1.8/log(10))*log((r_h/3.7)^1.11+6.9/(re+(2*6.9/(1-(r_h/3.7)^1.11))*(1-tanh(re/(2*6.9/(1-(r_h/3.7)^1.11)))))))^(-2))/(1+exp(-4.39*(re-re_crit)/re_range));
+          ((abs((-1.8/log(10))*log((r_h/3.7)^1.11+6.9/(re+1e-38*re_min)))+1e-38)^(-2))*0.5*(tanh(2.5*(re-re_crit)/re_range)+1);
 
         annotation (
           Icon(
@@ -1023,13 +1022,13 @@ package BondGraph
                 fillPattern=FillPattern.Solid,
                 lineColor={0,0,0},
                 textString="HR")}));
-      end hr;
+      end Hr;
 
-      model hrl "hydraulic resistance, laminar resistance"
+      model Hrl "hydraulic resistance, laminar resistance"
 
-        extends BondGraph.bg_linear.partial_models.port_x2;
+        extends BondGraph.BG_linear.Partial_models.Port_x2;
 
-        replaceable BondGraph.bg_nonlinear.media.hlp_iso_vg_32.hprop hprop
+        replaceable BondGraph.BG_nonlinear.Media.Hlp_iso_vg_32.Hprop hprop
           "properties of fluid, model of viscosity and density";
         parameter Real temp = 313.15 "temperature";
         parameter Real part_mass_air = 1.393e-6
@@ -1099,13 +1098,13 @@ package BondGraph
                 fillPattern=FillPattern.Solid,
                 lineColor={0,0,0},
                 textString="HRL")}));
-      end hrl;
+      end Hrl;
 
-      model hrt "hydraulic resistance, turbulent resistance"
+      model Hrt "hydraulic resistance, turbulent resistance"
 
-        extends BondGraph.bg_linear.partial_models.port_x2;
+        extends BondGraph.BG_linear.Partial_models.Port_x2;
 
-        replaceable BondGraph.bg_nonlinear.media.hlp_iso_vg_32.hprop hprop
+        replaceable BondGraph.BG_nonlinear.Media.Hlp_iso_vg_32.Hprop hprop
           "properties of fluid, model of viscosity and density";
         parameter Real temp = 313.15 "temperature";
         parameter Real part_mass_air = 1.393e-6
@@ -1175,13 +1174,13 @@ package BondGraph
                 fillPattern=FillPattern.Solid,
                 lineColor={0,0,0},
                 textString="HRT")}));
-      end hrt;
+      end Hrt;
 
-      model hse_acc "hydraulic effort source, acceleration pressure"
+      model Hse_acc "hydraulic effort source, acceleration pressure"
 
-        extends BondGraph.bg_linear.partial_models.port_x2;
+        extends BondGraph.BG_linear.Partial_models.Port_x2;
 
-        replaceable BondGraph.bg_nonlinear.media.hlp_iso_vg_32.hprop hprop
+        replaceable BondGraph.BG_nonlinear.Media.Hlp_iso_vg_32.Hprop hprop
           "properties of fluid, model of viscosity and density";
         parameter Real temp = 313.15 "temperature";
         parameter Real part_mass_air = 1.393e-6
@@ -1223,14 +1222,14 @@ package BondGraph
                 lineColor={0,0,0},
                 textString="HSe
 acc")}));
-      end hse_acc;
+      end Hse_acc;
 
-      model hse_ind
+      model Hse_ind
         "hydraulic effort source, inductance pressure, cross section change"
 
-        extends BondGraph.bg_linear.partial_models.port_x2;
+        extends BondGraph.BG_linear.Partial_models.Port_x2;
 
-        replaceable BondGraph.bg_nonlinear.media.hlp_iso_vg_32.hprop hprop
+        replaceable BondGraph.BG_nonlinear.Media.Hlp_iso_vg_32.Hprop hprop
           "properties of fluid, model of viscosity and density";
         parameter Real temp = 313.15 "temperature";
         parameter Real part_mass_air = 1.393e-6
@@ -1272,19 +1271,19 @@ acc")}));
                 lineColor={0,0,0},
                 textString="HSe
 ind")}));
-      end hse_ind;
+      end Hse_ind;
 
-      model mhc "modulated hydraulic capacitance"
+      model Mhc "modulated hydraulic capacitance"
 
-        extends BondGraph.bg_linear.partial_models.port_x2;
+        extends BondGraph.BG_linear.Partial_models.Port_x2;
 
-        BondGraph.interfaces.port_in port_in
+        BondGraph.Interfaces.Port_in port_in
           annotation (
             Placement(
               transformation(
                 extent={{-10,80},{10,100}})));
 
-        replaceable BondGraph.bg_nonlinear.media.hlp_iso_vg_32.hprop hprop
+        replaceable BondGraph.BG_nonlinear.Media.Hlp_iso_vg_32.Hprop hprop
           "properties of fluid, model of viscosity and density";
         parameter Real temp = 313.15 "temperature";
         parameter Real part_mass_air = 1.393e-6
@@ -1331,14 +1330,14 @@ ind")}));
                 fillPattern=FillPattern.Solid,
                 lineColor={0,0,0},
                 textString="MHC")}));
-      end mhc;
+      end Mhc;
 
-      model mhrt "signal controlled hydraulic resistance, turbulent resistance"
+      model Mhrt "signal controlled hydraulic resistance, turbulent resistance"
 
-        extends BondGraph.bg_linear.partial_models.port_x2;
-        extends BondGraph.bg_linear.partial_models.port_in_x1;
+        extends BondGraph.BG_linear.Partial_models.Port_x2;
+        extends BondGraph.BG_linear.Partial_models.Port_in_x1;
 
-        replaceable BondGraph.bg_nonlinear.media.hlp_iso_vg_32.hprop hprop
+        replaceable BondGraph.BG_nonlinear.Media.Hlp_iso_vg_32.Hprop hprop
           "properties of fluid, model of viscosity and density";
         parameter Real temp = 313.15 "temperature";
         parameter Real part_mass_air = 1.393e-6
@@ -1410,20 +1409,20 @@ ind")}));
                 fillPattern=FillPattern.Solid,
                 lineColor={0,0,0},
                 textString="MHRT")}));
-      end mhrt;
-    end hydraulics;
+      end Mhrt;
+    end Hydraulics;
 
-    package mechanics
+    package Mechanics
 
-      model mse_masy "mechanical effort source, asynchronous electric motor"
+      model Mse_masy "mechanical effort source, asynchronous electric motor"
 
-        BondGraph.interfaces.port port
+        BondGraph.Interfaces.Port port
           annotation (
             Placement(
               transformation(
                 extent={{80,-10},{100,10}})));
 
-        BondGraph.interfaces.port_in port_in
+        BondGraph.Interfaces.Port_in port_in
           annotation (
             Placement(
               transformation(
@@ -1533,18 +1532,18 @@ ind")}));
                 lineColor={0,0,0},
                 textString="MSe
 masy")}));
-      end mse_masy;
+      end Mse_masy;
 
-      model mse_masy_stat
+      model Mse_masy_stat
         "mechanical effort source, asynchronous electric motor, stationary characteristic"
 
-        BondGraph.interfaces.port port
+        BondGraph.Interfaces.Port port
           annotation (
             Placement(
               transformation(
                 extent={{80,-10},{100,10}})));
 
-        BondGraph.interfaces.port_in port_in
+        BondGraph.Interfaces.Port_in port_in
           annotation (
             Placement(
               transformation(
@@ -1622,12 +1621,12 @@ masy")}));
                 lineColor={0,0,0},
                 textString="MSe
 masys")}));
-      end mse_masy_stat;
-    end mechanics;
+      end Mse_masy_stat;
+    end Mechanics;
 
-    package media
+    package Media
 
-      package generic
+      package Generic
 
         function eta_air
           "viscosity of air, approximation function of experimental data"
@@ -1789,11 +1788,11 @@ masys")}));
                  (parts_mass * (1 ./ rho_parts));
 
         end rho_mix;
-      end generic;
+      end Generic;
 
-      package hlp_iso_vg_32
+      package Hlp_iso_vg_32
 
-        package hlp_iso_vg_32_par
+        package Hlp_iso_vg_32_par
 
           constant Real press_ref = 1.0e5 "reference pressure";
           constant Real temp_ref = 288.15 "reference temperature";
@@ -1820,18 +1819,18 @@ masys")}));
           constant Real part_mass_ref_air = 1.393e-6
             "mass proportion of undissolved air to total mass of mixture at reference conditions";
 
-        end hlp_iso_vg_32_par;
+        end Hlp_iso_vg_32_par;
 
-        model hprop
+        model Hprop
           "properties of fluid, viscosity and density of oil-air mixture"
 
-          BondGraph.interfaces.port_in port_in[3]
+          BondGraph.Interfaces.Port_in port_in[3]
             annotation (
               Placement(
                 transformation(
                   extent={{-10,80},{10,100}})));
 
-          BondGraph.interfaces.port_out port_out[2]
+          BondGraph.Interfaces.Port_out port_out[2]
             annotation (
               Placement(
                 transformation(
@@ -1952,16 +1951,16 @@ masys")}));
                   fillPattern=FillPattern.Solid,
                   lineColor={0,0,0},
                   textString="hprop")}));
-        end hprop;
-      end hlp_iso_vg_32;
-    end media;
-  end bg_nonlinear;
+        end Hprop;
+      end Hlp_iso_vg_32;
+    end Media;
+  end BG_nonlinear;
 
-  package examples
+  package Examples
 
-    package valves
+    package Valves
 
-      model switch_2x2
+      model Switch_2x2
 
         parameter Real par_c_1[3] = (1/0.1e5)*{-1,1,-1}
           "control gains, {u, p_1, p_2}";
@@ -1994,7 +1993,7 @@ masys")}));
         parameter Integer par_res_11 = 2
           "constitutive equation causality, par_res_5=1(effort out), par_res_5=2(flow out)";
 
-        BondGraph.interfaces.port_p port_p
+        BondGraph.Interfaces.Port_p port_p
           annotation (
             Placement(
               transformation(
@@ -2002,7 +2001,7 @@ masys")}));
               iconTransformation(
                 extent={{-100,-10},{-80,10}})));
 
-        BondGraph.interfaces.port_n port_n
+        BondGraph.Interfaces.Port_n port_n
           annotation (
             Placement(
               transformation(
@@ -2010,7 +2009,7 @@ masys")}));
               iconTransformation(
                 extent={{80,-10},{100,10}})));
 
-        BondGraph.interfaces.port_in port_in
+        BondGraph.Interfaces.Port_in port_in
           annotation (
             Placement(
               transformation(
@@ -2018,37 +2017,37 @@ masys")}));
               iconTransformation(
                 extent={{-10,180},{10,200}})));
 
-        BondGraph.bg_linear.sensors.sensor_p_e sensor_p_e1
+        BondGraph.BG_linear.Sensors.Sensor_p_e sensor_p_e1
           annotation (
             Placement(
               transformation(
                 extent={{-160,-10},{-140,10}})));
 
-        BondGraph.bg_linear.sensors.sensor_p_e sensor_p_e2
+        BondGraph.BG_linear.Sensors.Sensor_p_e sensor_p_e2
           annotation (
             Placement(
               transformation(
                 extent={{140,-10},{160,10}})));
 
-        BondGraph.bg_linear.elements.jzero jzero1(p=1, n=1)
+        BondGraph.BG_linear.Elements.Jzero jzero1(p=1, n=1)
           annotation (
             Placement(
               transformation(
                 extent={{-120,-10},{-100,10}})));
 
-        BondGraph.bg_linear.elements.jzero jzero2(p=1, n=1)
+        BondGraph.BG_linear.Elements.Jzero jzero2(p=1, n=1)
           annotation (
             Placement(
               transformation(
                 extent={{100,-10},{120,10}})));
 
-        BondGraph.blocks.const const1(c={{par_c_2}})
+        BondGraph.Blocks.Const const1(c={{par_c_2}})
           annotation (
             Placement(
               transformation(
                 extent={{-50,180},{-30,200}})));
 
-        BondGraph.blocks.prop_sat prop_sat1(
+        BondGraph.Blocks.Prop_sat prop_sat1(
           b={cat(   1,
                     {1},
                     par_c_1)},
@@ -2059,7 +2058,7 @@ masys")}));
               transformation(
                 extent={{-10,120},{10,140}})));
 
-        BondGraph.blocks.prop_sat prop_sat2(
+        BondGraph.Blocks.Prop_sat prop_sat2(
           b=identity(size(par_stat_1, 1)),
           x_min=1e-9*ones(size(par_stat_1, 1)),
           x_max=ones(size(par_stat_1, 1)))
@@ -2068,7 +2067,7 @@ masys")}));
               transformation(
                 extent={{-10,30},{10,50}})));
 
-        BondGraph.blocks.lin_sat lin_sat1(
+        BondGraph.Blocks.Lin_sat lin_sat1(
           b={{par_dyn_1}},
           a={{par_dyn_2}},
           x_0={par_dyn_3},
@@ -2081,7 +2080,7 @@ masys")}));
               transformation(
                 extent={{-10,90},{10,110}})));
 
-        BondGraph.blocks.sig_c sig_c1(
+        BondGraph.Blocks.Sig_c sig_c1(
           p_x=par_stat_1,
           p_cn=par_stat_2,
           p_cp=par_stat_3)
@@ -2090,7 +2089,7 @@ masys")}));
               transformation(
                 extent={{-10,60},{10,80}})));
 
-        BondGraph.bg_nonlinear.hydraulics.mhrt mhrt1(
+        BondGraph.BG_nonlinear.Hydraulics.MHRT mhrt1(
           temp=par_res_1,
           part_mass_air=par_res_2,
           e_nom=par_res_3,
@@ -2196,9 +2195,9 @@ masys")}));
                 textString="switch
 2x2
 ")}));
-      end switch_2x2;
+      end Switch_2x2;
 
-      model switch_3x2
+      model Switch_3x2
 
         parameter Real par_c_1[4] = (1/0.1e5)*{-1,0,0,1}
           "control gains, {u, p_1, p_2, p_3}";
@@ -2232,7 +2231,7 @@ masys")}));
         parameter Integer par_res_11[2] = 2*{1,1}
           "constitutive equation causality, par_res_5=1(effort out), par_res_5=2(flow out)";
 
-        BondGraph.interfaces.port_p port_p1
+        BondGraph.Interfaces.Port_p port_p1
           annotation (
             Placement(
               transformation(
@@ -2240,7 +2239,7 @@ masys")}));
               iconTransformation(
                 extent={{-100,90},{-80,110}})));
 
-        BondGraph.interfaces.port_p port_p2
+        BondGraph.Interfaces.Port_p port_p2
           annotation (
             Placement(
               transformation(
@@ -2248,7 +2247,7 @@ masys")}));
               iconTransformation(
                 extent={{-100,-110},{-80,-90}})));
 
-        BondGraph.interfaces.port_n port_n
+        BondGraph.Interfaces.Port_n port_n
           annotation (
             Placement(
               transformation(
@@ -2256,7 +2255,7 @@ masys")}));
               iconTransformation(
                 extent={{80,-10},{100,10}})));
 
-        BondGraph.interfaces.port_in port_in
+        BondGraph.Interfaces.Port_in port_in
           annotation (
             Placement(
               transformation(
@@ -2264,49 +2263,49 @@ masys")}));
               iconTransformation(
                 extent={{-10,180},{10,200}})));
 
-        BondGraph.bg_linear.sensors.sensor_p_e sensor_p_e1
+        BondGraph.BG_linear.Sensors.Sensor_p_e sensor_p_e1
           annotation (
             Placement(
               transformation(
                 extent={{-160,-10},{-140,10}})));
 
-        BondGraph.bg_linear.sensors.sensor_p_e sensor_p_e2
+        BondGraph.BG_linear.Sensors.Sensor_p_e sensor_p_e2
           annotation (
             Placement(
               transformation(
                 extent={{-160,-50},{-140,-30}})));
 
-        BondGraph.bg_linear.sensors.sensor_p_e sensor_p_e3
+        BondGraph.BG_linear.Sensors.Sensor_p_e sensor_p_e3
           annotation (
             Placement(
               transformation(
                 extent={{140,-10},{160,10}})));
 
-        BondGraph.bg_linear.elements.jzero jzero1(p=1, n=1)
+        BondGraph.BG_linear.Elements.Jzero jzero1(p=1, n=1)
           annotation (
             Placement(
               transformation(
                 extent={{-120,-10},{-100,10}})));
 
-        BondGraph.bg_linear.elements.jzero jzero2(p=1, n=1)
+        BondGraph.BG_linear.Elements.Jzero jzero2(p=1, n=1)
           annotation (
             Placement(
               transformation(
                 extent={{-120,-50},{-100,-30}})));
 
-        BondGraph.bg_linear.elements.jzero jzero3(n=1, p=2)
+        BondGraph.BG_linear.Elements.Jzero jzero3(n=1, p=2)
           annotation (
             Placement(
               transformation(
                 extent={{100,-10},{120,10}})));
 
-        BondGraph.blocks.const const1(c={{par_c_2}})
+        BondGraph.Blocks.Const const1(c={{par_c_2}})
           annotation (
             Placement(
               transformation(
                 extent={{-50,180},{-30,200}})));
 
-        BondGraph.blocks.prop_sat prop_sat1(
+        BondGraph.Blocks.Prop_sat prop_sat1(
           b={cat(   1,
                     {1},
                     par_c_1)},
@@ -2317,7 +2316,7 @@ masys")}));
               transformation(
                 extent={{-10,120},{10,140}})));
 
-        BondGraph.blocks.prop_sat prop_sat2(
+        BondGraph.Blocks.Prop_sat prop_sat2(
           b=identity(size(par_stat_1, 1)),
           x_min=1e-9*ones(size(par_stat_1, 1)),
           x_max=ones(size(par_stat_1, 1)))
@@ -2326,7 +2325,7 @@ masys")}));
               transformation(
                 extent={{-10,30},{10,50}})));
 
-        BondGraph.blocks.lin_sat lin_sat1(
+        BondGraph.Blocks.Lin_sat lin_sat1(
           b={{par_dyn_1}},
           a={{par_dyn_2}},
           x_0={par_dyn_3},
@@ -2339,7 +2338,7 @@ masys")}));
               transformation(
                 extent={{-10,90},{10,110}})));
 
-        BondGraph.blocks.sig_c sig_c1(
+        BondGraph.Blocks.Sig_c sig_c1(
           p_x=par_stat_1,
           p_cn=par_stat_2,
           p_cp=par_stat_3)
@@ -2348,7 +2347,7 @@ masys")}));
               transformation(
                 extent={{-10,60},{10,80}})));
 
-        BondGraph.bg_nonlinear.hydraulics.mhrt mhrt1(
+        BondGraph.BG_nonlinear.Hydraulics.MHRT mhrt1(
           temp=par_res_1[1],
           part_mass_air=par_res_2[1],
           e_nom=par_res_3[1],
@@ -2365,7 +2364,7 @@ masys")}));
               transformation(
                 extent={{-10,-10},{10,10}})));
 
-        BondGraph.bg_nonlinear.hydraulics.mhrt mhrt2(
+        BondGraph.BG_nonlinear.Hydraulics.MHRT mhrt2(
           temp=par_res_1[2],
           part_mass_air=par_res_2[2],
           e_nom=par_res_3[2],
@@ -2493,10 +2492,10 @@ masys")}));
                   fillColor={51,249,65},
                   fillPattern=FillPattern.Solid,
                 textString="switch
-3x2")}),  uses(Modelica(version="3.2")));
-      end switch_3x2;
+3x2")}));
+      end Switch_3x2;
 
-      model switch_4x3
+      model Switch_4x3
 
         parameter Real par_c_1[5] = (1/0.1e5)*{1,0,0,0,0}
           "control gains, {u, p_1, p_2, p_3, p_4}";
@@ -2530,7 +2529,7 @@ masys")}));
         parameter Integer par_res_11[4] = 2*{1,1,1,1}
           "constitutive equation causality, par_res_5=1(effort out), par_res_5=2(flow out)";
 
-        BondGraph.interfaces.port_p port_p1
+        BondGraph.Interfaces.Port_p port_p1
           annotation (
             Placement(
               transformation(
@@ -2538,7 +2537,7 @@ masys")}));
               iconTransformation(
                 extent={{-100,90},{-80,110}})));
 
-        BondGraph.interfaces.port_p port_p2
+        BondGraph.Interfaces.Port_p port_p2
           annotation (
             Placement(
               transformation(
@@ -2546,7 +2545,7 @@ masys")}));
               iconTransformation(
                 extent={{-100,-110},{-80,-90}})));
 
-        BondGraph.interfaces.port_n port_n1
+        BondGraph.Interfaces.Port_n port_n1
           annotation (
             Placement(
               transformation(
@@ -2554,7 +2553,7 @@ masys")}));
               iconTransformation(
                 extent={{80,90},{100,110}})));
 
-        BondGraph.interfaces.port_n port_n2
+        BondGraph.Interfaces.Port_n port_n2
           annotation (
             Placement(
               transformation(
@@ -2562,7 +2561,7 @@ masys")}));
               iconTransformation(
                 extent={{80,-110},{100,-90}})));
 
-        BondGraph.interfaces.port_in port_in
+        BondGraph.Interfaces.Port_in port_in
           annotation (
             Placement(
               transformation(
@@ -2570,61 +2569,61 @@ masys")}));
               iconTransformation(
                 extent={{-10,180},{10,200}})));
 
-        BondGraph.bg_linear.sensors.sensor_p_e sensor_p_e1
+        BondGraph.BG_linear.Sensors.Sensor_p_e sensor_p_e1
           annotation (
             Placement(
               transformation(
                 extent={{-160,-10},{-140,10}})));
 
-        BondGraph.bg_linear.sensors.sensor_p_e sensor_p_e2
+        BondGraph.BG_linear.Sensors.Sensor_p_e sensor_p_e2
           annotation (
             Placement(
               transformation(
                 extent={{-160,-50},{-140,-30}})));
 
-        BondGraph.bg_linear.sensors.sensor_p_e sensor_p_e3
+        BondGraph.BG_linear.Sensors.Sensor_p_e sensor_p_e3
           annotation (
             Placement(
               transformation(
                 extent={{140,-10},{160,10}})));
 
-        BondGraph.bg_linear.sensors.sensor_p_e sensor_p_e4
+        BondGraph.BG_linear.Sensors.Sensor_p_e sensor_p_e4
           annotation (
             Placement(
               transformation(
                 extent={{140,-50},{160,-30}})));
 
-        BondGraph.bg_linear.elements.jzero jzero1(p=1, n=2)
+        BondGraph.BG_linear.Elements.Jzero jzero1(p=1, n=2)
           annotation (
             Placement(
               transformation(
                 extent={{-120,-10},{-100,10}})));
 
-        BondGraph.bg_linear.elements.jzero jzero2(p=1, n=2)
+        BondGraph.BG_linear.Elements.Jzero jzero2(p=1, n=2)
           annotation (
             Placement(
               transformation(
                 extent={{-120,-50},{-100,-30}})));
 
-        BondGraph.bg_linear.elements.jzero jzero3(n=1, p=2)
+        BondGraph.BG_linear.Elements.Jzero jzero3(n=1, p=2)
           annotation (
             Placement(
               transformation(
                 extent={{100,-10},{120,10}})));
 
-        BondGraph.bg_linear.elements.jzero jzero4(n=1, p=2)
+        BondGraph.BG_linear.Elements.Jzero jzero4(n=1, p=2)
           annotation (
             Placement(
               transformation(
                 extent={{100,-50},{120,-30}})));
 
-        BondGraph.blocks.const const1(c={{par_c_2}})
+        BondGraph.Blocks.Const const1(c={{par_c_2}})
           annotation (
             Placement(
               transformation(
                 extent={{-50,180},{-30,200}})));
 
-        BondGraph.blocks.prop_sat prop_sat1(
+        BondGraph.Blocks.Prop_sat prop_sat1(
           b={cat(   1,
                     {1},
                     par_c_1)},
@@ -2635,7 +2634,7 @@ masys")}));
               transformation(
                 extent={{-10,120},{10,140}})));
 
-        BondGraph.blocks.prop_sat prop_sat2(
+        BondGraph.Blocks.Prop_sat prop_sat2(
           b=identity(size(par_stat_1, 1)),
           x_min=1e-9*ones(size(par_stat_1, 1)),
           x_max=ones(size(par_stat_1, 1)))
@@ -2644,7 +2643,7 @@ masys")}));
               transformation(
                 extent={{-10,30},{10,50}})));
 
-        BondGraph.blocks.lin_sat lin_sat1(
+        BondGraph.Blocks.Lin_sat lin_sat1(
           b={{par_dyn_1}},
           a={{par_dyn_2}},
           x_0={par_dyn_3},
@@ -2657,7 +2656,7 @@ masys")}));
               transformation(
                 extent={{-10,90},{10,110}})));
 
-        BondGraph.blocks.sig_c sig_c1(
+        BondGraph.Blocks.Sig_c sig_c1(
           p_x=par_stat_1,
           p_cn=par_stat_2,
           p_cp=par_stat_3)
@@ -2666,7 +2665,7 @@ masys")}));
               transformation(
                 extent={{-10,60},{10,80}})));
 
-        BondGraph.bg_nonlinear.hydraulics.mhrt mhrt1(
+        BondGraph.BG_nonlinear.Hydraulics.MHRT mhrt1(
           temp=par_res_1[1],
           part_mass_air=par_res_2[1],
           e_nom=par_res_3[1],
@@ -2683,7 +2682,7 @@ masys")}));
               transformation(
                 extent={{-10,-10},{10,10}})));
 
-        BondGraph.bg_nonlinear.hydraulics.mhrt mhrt2(
+        BondGraph.BG_nonlinear.Hydraulics.MHRT mhrt2(
           temp=par_res_1[2],
           part_mass_air=par_res_2[2],
           e_nom=par_res_3[2],
@@ -2700,7 +2699,7 @@ masys")}));
               transformation(
                 extent={{-10,-50},{10,-30}})));
 
-        BondGraph.bg_nonlinear.hydraulics.mhrt mhrt3(
+        BondGraph.BG_nonlinear.Hydraulics.MHRT mhrt3(
           temp=par_res_1[3],
           part_mass_air=par_res_2[3],
           e_nom=par_res_3[3],
@@ -2717,7 +2716,7 @@ masys")}));
               transformation(
                 extent={{-10,-90},{10,-70}})));
 
-        BondGraph.bg_nonlinear.hydraulics.mhrt mhrt4(
+        BondGraph.BG_nonlinear.Hydraulics.MHRT mhrt4(
           temp=par_res_1[4],
           part_mass_air=par_res_2[4],
           e_nom=par_res_3[4],
@@ -2881,12 +2880,12 @@ masys")}));
                   fillColor={51,249,65},
                   fillPattern=FillPattern.Solid,
                 textString="switch
-4x3")}),  uses(Modelica(version="3.2")));
-      end switch_4x3;
-    end valves;
+4x3")}));
+      end Switch_4x3;
+    end Valves;
 
-    package pipes
-      model pipe_x2
+    package Pipes
+      model Pipe_x2
 
           parameter Real temp_p = 313.15 "temperature";
           parameter Real part_mass_air_p = 1.393e-6
@@ -2912,31 +2911,31 @@ masys")}));
           parameter Integer hrt_par_caus[2] = {2,2}
           "constitutive equation causality of hrt, par_caus=1(effort out), par_caus=2(flow out)";
 
-          BondGraph.interfaces.port_p port_p
+          BondGraph.Interfaces.Port_p port_p
             annotation (
               Placement(
                 transformation(
                   extent={{-300,-10},{-280,10}}),
                 iconTransformation(
                   extent={{-300,-10},{-280,10}})));
-          BondGraph.interfaces.port_n port_n
+          BondGraph.Interfaces.Port_n port_n
             annotation (
               Placement(
                 transformation(
                   extent={{280,-10},{300,10}}),
                 iconTransformation(
                   extent={{280,-10},{300,10}})));
-          BondGraph.bg_linear.elements.jzero jzero1(p=1, n=1)
+          BondGraph.BG_linear.Elements.Jzero jzero1(p=1, n=1)
             annotation (
               Placement(
                 transformation(
                   extent={{-260,-10},{-240,10}})));
-          BondGraph.bg_linear.elements.jzero jzero2(p=1, n=1)
+          BondGraph.BG_linear.Elements.Jzero jzero2(p=1, n=1)
             annotation (
               Placement(
                 transformation(
                   extent={{240,-10},{260,10}})));
-          BondGraph.bg_nonlinear.hydraulics.hrt hrt1(
+          BondGraph.BG_nonlinear.Hydraulics.HRT hrt1(
           temp=temp_p,
           part_mass_air=part_mass_air_p,
           e_nom=e_nom_p,
@@ -2952,7 +2951,7 @@ masys")}));
               Placement(
                 transformation(
                   extent={{-220,-10},{-200,10}})));
-          BondGraph.bg_nonlinear.hydraulics.hrt hrt2(
+          BondGraph.BG_nonlinear.Hydraulics.HRT hrt2(
           temp=temp_p,
           part_mass_air=part_mass_air_p,
           e_nom=e_nom_p,
@@ -2968,7 +2967,7 @@ masys")}));
               Placement(
                 transformation(
                   extent={{180,-10},{200,10}})));
-          BondGraph.bg_nonlinear.hydraulics.hr hr1(
+          BondGraph.BG_nonlinear.Hydraulics.HR hr1(
           temp=temp_p,
           part_mass_air=part_mass_air_p,
           e_nom=e_nom_p,
@@ -2984,7 +2983,7 @@ masys")}));
               Placement(
                 transformation(
                   extent={{-60,-10},{-40,10}})));
-          BondGraph.bg_nonlinear.hydraulics.hr hr2(
+          BondGraph.BG_nonlinear.Hydraulics.HR hr2(
           temp=temp_p,
           part_mass_air=part_mass_air_p,
           e_nom=e_nom_p,
@@ -3000,7 +2999,7 @@ masys")}));
               Placement(
                 transformation(
                   extent={{100,-10},{120,10}})));
-          BondGraph.bg_nonlinear.hydraulics.hc hc1(
+          BondGraph.BG_nonlinear.Hydraulics.HC hc1(
           c=c_p,
           v_0=((1/n_c)*l_p)*(0.5*asin(1))*d_p^2,
           e_0=e_0_p,
@@ -3012,7 +3011,7 @@ masys")}));
               Placement(
                 transformation(
                   extent={{-180,-10},{-160,10}})));
-          BondGraph.bg_nonlinear.hydraulics.hc hc2(
+          BondGraph.BG_nonlinear.Hydraulics.HC hc2(
           c=c_p,
           v_0=((1/n_c)*l_p)*(0.5*asin(1))*d_p^2,
           e_0=e_0_p,
@@ -3024,7 +3023,7 @@ masys")}));
               Placement(
                 transformation(
                   extent={{-100,-10},{-80,10}})));
-          BondGraph.bg_nonlinear.hydraulics.hc hc3(
+          BondGraph.BG_nonlinear.Hydraulics.HC hc3(
           c=c_p,
           v_0=((1/n_c)*l_p)*(0.5*asin(1))*d_p^2,
           e_0=e_0_p,
@@ -3036,7 +3035,7 @@ masys")}));
               Placement(
                 transformation(
                   extent={{-20,-10},{0,10}})));
-          BondGraph.bg_nonlinear.hydraulics.hc hc4(
+          BondGraph.BG_nonlinear.Hydraulics.HC hc4(
           c=c_p,
           v_0=((1/n_c)*l_p)*(0.5*asin(1))*d_p^2,
           e_0=e_0_p,
@@ -3048,7 +3047,7 @@ masys")}));
               Placement(
                 transformation(
                   extent={{60,-10},{80,10}})));
-          BondGraph.bg_nonlinear.hydraulics.hc hc5(
+          BondGraph.BG_nonlinear.Hydraulics.HC hc5(
           c=c_p,
           v_0=((1/n_c)*l_p)*(0.5*asin(1))*d_p^2,
           e_0=e_0_p,
@@ -3060,7 +3059,7 @@ masys")}));
               Placement(
                 transformation(
                   extent={{140,-10},{160,10}})));
-          BondGraph.bg_nonlinear.hydraulics.hi hi1(
+          BondGraph.BG_nonlinear.Hydraulics.HI hi1(
           temp=temp_p,
           part_mass_air=part_mass_air_p,
           e_nom=e_nom_p,
@@ -3072,7 +3071,7 @@ masys")}));
               Placement(
                 transformation(
                   extent={{-140,-10},{-120,10}})));
-          BondGraph.bg_nonlinear.hydraulics.hi hi2(
+          BondGraph.BG_nonlinear.Hydraulics.HI hi2(
           temp=temp_p,
           part_mass_air=part_mass_air_p,
           e_nom=e_nom_p,
@@ -3182,9 +3181,9 @@ masys")}));
                   fillColor={51,249,65},
                   fillPattern=FillPattern.Solid,
                 textString="pipe_x2")}));
-      end pipe_x2;
+      end Pipe_x2;
 
-        model pipe_x2_lin
+        model Pipe_x2_lin
 
           parameter Real r_p[4] = 1e9*ones(4) "resistance parameters";
           parameter Real c_p[5] = 1e-12*ones(5) "compliance parameters";
@@ -3192,136 +3191,136 @@ masys")}));
           parameter Real e_0_p = 1e5 "initial pressure";
           parameter Real f_0_p = 0 "initial flow";
 
-          BondGraph.interfaces.port_p port_p
+          BondGraph.Interfaces.Port_p port_p
             annotation (
               Placement(
                 transformation(
                   extent={{-300,-10},{-280,10}}),
                 iconTransformation(
                   extent={{-300,-10},{-280,10}})));
-          BondGraph.interfaces.port_n port_n
+          BondGraph.Interfaces.Port_n port_n
             annotation (
               Placement(
                 transformation(
                   extent={{280,-10},{300,10}}),
                 iconTransformation(
                   extent={{280,-10},{300,10}})));
-          BondGraph.bg_linear.elements.jone jone1(p=1, n=2)
+          BondGraph.BG_linear.Elements.Jone jone1(p=1, n=2)
             annotation (
               Placement(
                 transformation(
                   extent={{-220,-10},{-200,10}})));
-          BondGraph.bg_linear.elements.jone jone2(p=1, n=2)
+          BondGraph.BG_linear.Elements.Jone jone2(p=1, n=2)
             annotation (
               Placement(
                 transformation(
                   extent={{-140,-10},{-120,10}})));
-          BondGraph.bg_linear.elements.jone jone3(p=1, n=2)
+          BondGraph.BG_linear.Elements.Jone jone3(p=1, n=2)
             annotation (
               Placement(
                 transformation(
                   extent={{-60,-10},{-40,10}})));
-          BondGraph.bg_linear.elements.jone jone4(p=1, n=2)
+          BondGraph.BG_linear.Elements.Jone jone4(p=1, n=2)
             annotation (
               Placement(
                 transformation(
                   extent={{20,-10},{40,10}})));
-          BondGraph.bg_linear.elements.jone jone5(p=1, n=2)
+          BondGraph.BG_linear.Elements.Jone jone5(p=1, n=2)
             annotation (
               Placement(
                 transformation(
                   extent={{100,-10},{120,10}})));
-          BondGraph.bg_linear.elements.jone jone6(p=1, n=2)
+          BondGraph.BG_linear.Elements.Jone jone6(p=1, n=2)
             annotation (
               Placement(
                 transformation(
                   extent={{180,-10},{200,10}})));
-          BondGraph.bg_linear.elements.jzero jzero1(p=1, n=1)
+          BondGraph.BG_linear.Elements.Jzero jzero1(p=1, n=1)
             annotation (
               Placement(
                 transformation(
                   extent={{-260,-10},{-240,10}})));
-          BondGraph.bg_linear.elements.jzero jzero2(p=1, n=1)
+          BondGraph.BG_linear.Elements.Jzero jzero2(p=1, n=1)
             annotation (
               Placement(
                 transformation(
                   extent={{240,-10},{260,10}})));
-          BondGraph.bg_linear.elements.jzero jzero3(p=1, n=2)
+          BondGraph.BG_linear.Elements.Jzero jzero3(p=1, n=2)
             annotation (
               Placement(
                 transformation(
                   extent={{-180,-10},{-160,10}})));
-          BondGraph.bg_linear.elements.jzero jzero4(p=1, n=2)
+          BondGraph.BG_linear.Elements.Jzero jzero4(p=1, n=2)
             annotation (
               Placement(
                 transformation(
                   extent={{-100,-10},{-80,10}})));
-          BondGraph.bg_linear.elements.jzero jzero5(p=1, n=2)
+          BondGraph.BG_linear.Elements.Jzero jzero5(p=1, n=2)
             annotation (
               Placement(
                 transformation(
                   extent={{-20,-10},{0,10}})));
-          BondGraph.bg_linear.elements.jzero jzero6(p=1, n=2)
+          BondGraph.BG_linear.Elements.Jzero jzero6(p=1, n=2)
             annotation (
               Placement(
                 transformation(
                   extent={{60,-10},{80,10}})));
-          BondGraph.bg_linear.elements.jzero jzero7(p=1, n=2)
+          BondGraph.BG_linear.Elements.Jzero jzero7(p=1, n=2)
             annotation (
               Placement(
                 transformation(
                   extent={{140,-10},{160,10}})));
-          BondGraph.bg_linear.elements.r r1(r=r_p[1])
+          BondGraph.BG_linear.Elements.R r1(r=r_p[1])
             annotation (
               Placement(
                 transformation(
                   extent={{-220,30},{-200,50}})));
-          BondGraph.bg_linear.elements.r r2(r=r_p[2])
+          BondGraph.BG_linear.Elements.R r2(r=r_p[2])
             annotation (
               Placement(
                 transformation(
                   extent={{-60,30},{-40,50}})));
-          BondGraph.bg_linear.elements.r r3(r=r_p[3])
+          BondGraph.BG_linear.Elements.R r3(r=r_p[3])
             annotation (
               Placement(
                 transformation(
                   extent={{100,30},{120,50}})));
-          BondGraph.bg_linear.elements.r r4(r=r_p[4])
+          BondGraph.BG_linear.Elements.R r4(r=r_p[4])
             annotation (
               Placement(
                 transformation(
                   extent={{180,30},{200,50}})));
-          BondGraph.bg_linear.elements.c c1(c=c_p[1], e_0=e_0_p)
+          BondGraph.BG_linear.Elements.C c1(c=c_p[1], e_0=e_0_p)
             annotation (
               Placement(
                 transformation(
                   extent={{-180,30},{-160,50}})));
-          BondGraph.bg_linear.elements.c c2(c=c_p[2], e_0=e_0_p)
+          BondGraph.BG_linear.Elements.C c2(c=c_p[2], e_0=e_0_p)
             annotation (
               Placement(
                 transformation(
                   extent={{-100,30},{-80,50}})));
-          BondGraph.bg_linear.elements.c c3(c=c_p[3], e_0=e_0_p)
+          BondGraph.BG_linear.Elements.C c3(c=c_p[3], e_0=e_0_p)
             annotation (
               Placement(
                 transformation(
                   extent={{-20,30},{0,50}})));
-          BondGraph.bg_linear.elements.c c4(c=c_p[4], e_0=e_0_p)
+          BondGraph.BG_linear.Elements.C c4(c=c_p[4], e_0=e_0_p)
             annotation (
               Placement(
                 transformation(
                   extent={{60,30},{80,50}})));
-          BondGraph.bg_linear.elements.c c5(c=c_p[5], e_0=e_0_p)
+          BondGraph.BG_linear.Elements.C c5(c=c_p[5], e_0=e_0_p)
             annotation (
               Placement(
                 transformation(
                   extent={{140,30},{160,50}})));
-          BondGraph.bg_linear.elements.i i1(i=i_p[1], f_0=f_0_p)
+          BondGraph.BG_linear.Elements.I i1(i=i_p[1], f_0=f_0_p)
             annotation (
               Placement(
                 transformation(
                   extent={{-140,30},{-120,50}})));
-          BondGraph.bg_linear.elements.i i2(i=i_p[2], f_0=f_0_p)
+          BondGraph.BG_linear.Elements.I i2(i=i_p[2], f_0=f_0_p)
             annotation (
               Placement(
                 transformation(
@@ -3463,9 +3462,9 @@ masys")}));
                   fillColor={51,249,65},
                   fillPattern=FillPattern.Solid,
                   textString="pipe_x2_lin")}));
-        end pipe_x2_lin;
+        end Pipe_x2_lin;
 
-      model pipe_x1
+      model Pipe_x1
 
           parameter Real temp_p = 313.15 "temperature";
           parameter Real part_mass_air_p = 1.393e-6
@@ -3491,31 +3490,31 @@ masys")}));
           parameter Integer hrt_par_caus[2] = {2,2}
           "constitutive equation causality of hrt, par_caus=1(effort out), par_caus=2(flow out)";
 
-          BondGraph.interfaces.port_p port_p
+          BondGraph.Interfaces.Port_p port_p
             annotation (
               Placement(
                 transformation(
                   extent={{-300,-10},{-280,10}}),
                 iconTransformation(
                   extent={{-300,-10},{-280,10}})));
-          BondGraph.interfaces.port_n port_n
+          BondGraph.Interfaces.Port_n port_n
             annotation (
               Placement(
                 transformation(
                   extent={{280,-10},{300,10}}),
                 iconTransformation(
                   extent={{280,-10},{300,10}})));
-          BondGraph.bg_linear.elements.jzero jzero1(p=1, n=1)
+          BondGraph.BG_linear.Elements.Jzero jzero1(p=1, n=1)
             annotation (
               Placement(
                 transformation(
                   extent={{-260,-10},{-240,10}})));
-          BondGraph.bg_linear.elements.jzero jzero2(p=1, n=1)
+          BondGraph.BG_linear.Elements.Jzero jzero2(p=1, n=1)
             annotation (
               Placement(
                 transformation(
                   extent={{240,-10},{260,10}})));
-          BondGraph.bg_nonlinear.hydraulics.hrt hrt1(
+          BondGraph.BG_nonlinear.Hydraulics.HRT hrt1(
           temp=temp_p,
           part_mass_air=part_mass_air_p,
           e_nom=e_nom_p,
@@ -3531,7 +3530,7 @@ masys")}));
               Placement(
                 transformation(
                   extent={{-220,-10},{-200,10}})));
-          BondGraph.bg_nonlinear.hydraulics.hrt hrt2(
+          BondGraph.BG_nonlinear.Hydraulics.HRT hrt2(
           temp=temp_p,
           part_mass_air=part_mass_air_p,
           e_nom=e_nom_p,
@@ -3547,7 +3546,7 @@ masys")}));
               Placement(
                 transformation(
                   extent={{20,-10},{40,10}})));
-          BondGraph.bg_nonlinear.hydraulics.hr hr1(
+          BondGraph.BG_nonlinear.Hydraulics.HR hr1(
           temp=temp_p,
           part_mass_air=part_mass_air_p,
           e_nom=e_nom_p,
@@ -3563,7 +3562,7 @@ masys")}));
               Placement(
                 transformation(
                   extent={{-60,-10},{-40,10}})));
-          BondGraph.bg_nonlinear.hydraulics.hc hc1(
+          BondGraph.BG_nonlinear.Hydraulics.HC hc1(
           c=c_p,
           v_0=((1/n_c)*l_p)*(0.5*asin(1))*d_p^2,
           e_0=e_0_p,
@@ -3575,7 +3574,7 @@ masys")}));
               Placement(
                 transformation(
                   extent={{-180,-10},{-160,10}})));
-          BondGraph.bg_nonlinear.hydraulics.hc hc2(
+          BondGraph.BG_nonlinear.Hydraulics.HC hc2(
           c=c_p,
           v_0=((1/n_c)*l_p)*(0.5*asin(1))*d_p^2,
           e_0=e_0_p,
@@ -3587,7 +3586,7 @@ masys")}));
               Placement(
                 transformation(
                   extent={{-100,-10},{-80,10}})));
-          BondGraph.bg_nonlinear.hydraulics.hc hc3(
+          BondGraph.BG_nonlinear.Hydraulics.HC hc3(
           c=c_p,
           v_0=((1/n_c)*l_p)*(0.5*asin(1))*d_p^2,
           e_0=e_0_p,
@@ -3599,7 +3598,7 @@ masys")}));
               Placement(
                 transformation(
                   extent={{-20,-10},{0,10}})));
-          BondGraph.bg_nonlinear.hydraulics.hi hi1(
+          BondGraph.BG_nonlinear.Hydraulics.HI hi1(
           temp=temp_p,
           part_mass_air=part_mass_air_p,
           e_nom=e_nom_p,
@@ -3693,9 +3692,9 @@ masys")}));
                   fillColor={51,249,65},
                   fillPattern=FillPattern.Solid,
                 textString="pipe_x1")}));
-      end pipe_x1;
+      end Pipe_x1;
 
-        model pipe_x1_lin
+        model Pipe_x1_lin
 
           parameter Real r_p[3] = 1e9*ones(3) "resistance parameters";
           parameter Real c_p[3] = 1e-12*ones(3) "compliance parameters";
@@ -3703,96 +3702,96 @@ masys")}));
           parameter Real e_0_p = 1e5 "initial pressure";
           parameter Real f_0_p = 0 "initial flow";
 
-          BondGraph.interfaces.port_p port_p
+          BondGraph.Interfaces.Port_p port_p
             annotation (
               Placement(
                 transformation(
                   extent={{-300,-10},{-280,10}}),
                 iconTransformation(
                   extent={{-300,-10},{-280,10}})));
-          BondGraph.interfaces.port_n port_n
+          BondGraph.Interfaces.Port_n port_n
             annotation (
               Placement(
                 transformation(
                   extent={{280,-10},{300,10}}),
                 iconTransformation(
                   extent={{280,-10},{300,10}})));
-          BondGraph.bg_linear.elements.jone jone1(p=1, n=2)
+          BondGraph.BG_linear.Elements.Jone jone1(p=1, n=2)
             annotation (
               Placement(
                 transformation(
                   extent={{-220,-10},{-200,10}})));
-          BondGraph.bg_linear.elements.jone jone2(p=1, n=2)
+          BondGraph.BG_linear.Elements.Jone jone2(p=1, n=2)
             annotation (
               Placement(
                 transformation(
                   extent={{-140,-10},{-120,10}})));
-          BondGraph.bg_linear.elements.jone jone3(p=1, n=2)
+          BondGraph.BG_linear.Elements.Jone jone3(p=1, n=2)
             annotation (
               Placement(
                 transformation(
                   extent={{-60,-10},{-40,10}})));
-          BondGraph.bg_linear.elements.jone jone6(n=2, p=1)
+          BondGraph.BG_linear.Elements.Jone jone6(n=2, p=1)
             annotation (
               Placement(
                 transformation(
                   extent={{20,-10},{40,10}})));
-          BondGraph.bg_linear.elements.jzero jzero1(p=1, n=1)
+          BondGraph.BG_linear.Elements.Jzero jzero1(p=1, n=1)
             annotation (
               Placement(
                 transformation(
                   extent={{-260,-10},{-240,10}})));
-          BondGraph.bg_linear.elements.jzero jzero2(p=1, n=1)
+          BondGraph.BG_linear.Elements.Jzero jzero2(p=1, n=1)
             annotation (
               Placement(
                 transformation(
                   extent={{240,-10},{260,10}})));
-          BondGraph.bg_linear.elements.jzero jzero3(p=1, n=2)
+          BondGraph.BG_linear.Elements.Jzero jzero3(p=1, n=2)
             annotation (
               Placement(
                 transformation(
                   extent={{-180,-10},{-160,10}})));
-          BondGraph.bg_linear.elements.jzero jzero4(p=1, n=2)
+          BondGraph.BG_linear.Elements.Jzero jzero4(p=1, n=2)
             annotation (
               Placement(
                 transformation(
                   extent={{-100,-10},{-80,10}})));
-          BondGraph.bg_linear.elements.jzero jzero5(p=1, n=2)
+          BondGraph.BG_linear.Elements.Jzero jzero5(p=1, n=2)
             annotation (
               Placement(
                 transformation(
                   extent={{-20,-10},{0,10}})));
-          BondGraph.bg_linear.elements.r r1(r=r_p[1])
+          BondGraph.BG_linear.Elements.R r1(r=r_p[1])
             annotation (
               Placement(
                 transformation(
                   extent={{-220,20},{-200,40}})));
-          BondGraph.bg_linear.elements.r r2(r=r_p[2])
+          BondGraph.BG_linear.Elements.R r2(r=r_p[2])
             annotation (
               Placement(
                 transformation(
                   extent={{-60,20},{-40,40}})));
-          BondGraph.bg_linear.elements.r r4(r=r_p[3])
+          BondGraph.BG_linear.Elements.R r4(r=r_p[3])
             annotation (
               Placement(
                 transformation(
                   extent={{20,20},{40,40}})));
-          BondGraph.bg_linear.elements.c c1(c=c_p[1], e_0=e_0_p)
+          BondGraph.BG_linear.Elements.C c1(c=c_p[1], e_0=e_0_p)
             annotation (
               Placement(
                 transformation(
                   extent={{-180,20},{-160,40}})));
-          BondGraph.bg_linear.elements.c c2(c=c_p[2], e_0=e_0_p)
+          BondGraph.BG_linear.Elements.C c2(c=c_p[2], e_0=e_0_p)
             annotation (
               Placement(
                 transformation(
                   extent={{-100,20},{-80,40}})));
-          BondGraph.bg_linear.elements.c c3(c=c_p[3], e_0=e_0_p)
+          BondGraph.BG_linear.Elements.C c3(c=c_p[3], e_0=e_0_p)
             annotation (
               Placement(
                 transformation(
                   extent={{-20,20},{0,40}})));
-          BondGraph.bg_linear.elements.i i1(i=i_p[1], f_0=f_0_p)
+          BondGraph.BG_linear.Elements.I i1(i=i_p[1], f_0=f_0_p)
             annotation (
               Placement(
                 transformation(
@@ -3902,11 +3901,11 @@ masys")}));
                   fillColor={51,249,65},
                   fillPattern=FillPattern.Solid,
                   textString="pipe_x1_lin")}));
-        end pipe_x1_lin;
-    end pipes;
+        end Pipe_x1_lin;
+    end Pipes;
 
-    package cylinders
-      model cylinder_lin
+    package Cylinders
+      model Cylinder_lin
         parameter Real r_tf[2] = (1/(0.5*asin(1)*0.1^2))*{1,1}
           "transformer parameters";
         parameter Real r_hydr[2] = 1e8*{1,1} "hydraulic resistance parameters";
@@ -3926,7 +3925,7 @@ masys")}));
         parameter Real r_mech_2 = 1e3
           "mechanical resistance parameter, piston rod";
 
-        BondGraph.interfaces.port_p port_p1
+        BondGraph.Interfaces.Port_p port_p1
           annotation (
             Placement(
               transformation(
@@ -3934,7 +3933,7 @@ masys")}));
               iconTransformation(
                 extent={{-100,90},{-80,110}})));
 
-        BondGraph.interfaces.port_p port_p2
+        BondGraph.Interfaces.Port_p port_p2
           annotation (
             Placement(
               transformation(
@@ -3942,7 +3941,7 @@ masys")}));
               iconTransformation(
                 extent={{-100,-110},{-80,-90}})));
 
-        BondGraph.interfaces.port_n port_n
+        BondGraph.Interfaces.Port_n port_n
           annotation (
             Placement(
               transformation(
@@ -3950,61 +3949,61 @@ masys")}));
               iconTransformation(
                 extent={{-10,-200},{10,-180}})));
 
-        BondGraph.bg_linear.elements.tf tf1(r=r_tf[1])
+        BondGraph.BG_linear.Elements.TF tf1(r=r_tf[1])
           annotation (
             Placement(
               transformation(
                 extent={{-80,70},{-60,90}})));
 
-        BondGraph.bg_linear.elements.tf tf2(r=-r_tf[2])
+        BondGraph.BG_linear.Elements.TF tf2(r=-r_tf[2])
           annotation (
             Placement(
               transformation(
                 extent={{-80,-90},{-60,-70}})));
 
-        BondGraph.bg_linear.elements.c c_h_1(c=c_hydr[1], e_0=e_0_hydr[1])
+        BondGraph.BG_linear.Elements.C c_h_1(c=c_hydr[1], e_0=e_0_hydr[1])
           annotation (
             Placement(
               transformation(
                 extent={{-120,40},{-100,60}})));
 
-        BondGraph.bg_linear.elements.c c_h_2(c=c_hydr[2], e_0=e_0_hydr[2])
+        BondGraph.BG_linear.Elements.C c_h_2(c=c_hydr[2], e_0=e_0_hydr[2])
           annotation (
             Placement(
               transformation(
                 extent={{-120,-60},{-100,-40}})));
 
-        BondGraph.bg_linear.elements.r r_h_1(r=r_hydr[1])
+        BondGraph.BG_linear.Elements.R r_h_1(r=r_hydr[1])
           annotation (
             Placement(
               transformation(
                 extent={{-160,40},{-140,60}})));
 
-        BondGraph.bg_linear.elements.r r_h_2(r=r_hydr[2])
+        BondGraph.BG_linear.Elements.R r_h_2(r=r_hydr[2])
           annotation (
             Placement(
               transformation(
                 extent={{-160,-60},{-140,-40}})));
 
-        BondGraph.bg_linear.elements.i i_m_1(i=i_mech, f_0=f_0_mech)
+        BondGraph.BG_linear.Elements.I i_m_1(i=i_mech, f_0=f_0_mech)
           annotation (
             Placement(
               transformation(
                 extent={{40,70},{60,90}})));
 
-        BondGraph.bg_linear.elements.r r_m_1(r=r_mech_1)
+        BondGraph.BG_linear.Elements.R r_m_1(r=r_mech_1)
           annotation (
             Placement(
               transformation(
                 extent={{40,40},{60,60}})));
 
-        BondGraph.bg_linear.elements.mse mse1
+        BondGraph.BG_linear.Elements.MSe mse1
           annotation (
             Placement(
               transformation(
                 extent={{40,-20},{60,0}})));
 
-        BondGraph.bg_linear.sensors.sensor_i_f sensor_i_f1(gain=1/c_mech_lim,
+        BondGraph.BG_linear.Sensors.Sensor_i_f sensor_i_f1(gain=1/c_mech_lim,
             y_0=q_0_mech)
           annotation (
             Placement(
@@ -4018,55 +4017,55 @@ masys")}));
               transformation(
                 extent={{0,10},{20,30}})));
 
-        BondGraph.bg_linear.elements.c c_m_1(c=c_mech, e_0=e_0_mech)
+        BondGraph.BG_linear.Elements.C c_m_1(c=c_mech, e_0=e_0_mech)
           annotation (
             Placement(
               transformation(
                 extent={{140,10},{160,30}})));
 
-        BondGraph.bg_linear.elements.r r_m_2(r=r_mech_2)
+        BondGraph.BG_linear.Elements.R r_m_2(r=r_mech_2)
           annotation (
             Placement(
               transformation(
                 extent={{140,70},{160,90}})));
 
-        BondGraph.bg_linear.elements.jone jone1(p=1, n=2)
+        BondGraph.BG_linear.Elements.Jone jone1(p=1, n=2)
           annotation (
             Placement(
               transformation(
                   extent={{-160,70},{-140,90}})));
 
-        BondGraph.bg_linear.elements.jone jone2(p=1, n=2)
+        BondGraph.BG_linear.Elements.Jone jone2(p=1, n=2)
           annotation (
             Placement(
               transformation(
                 extent={{-160,-90},{-140,-70}})));
 
-        BondGraph.bg_linear.elements.jone jone3(p=2, n=4)
+        BondGraph.BG_linear.Elements.Jone jone3(p=2, n=4)
           annotation (
             Placement(
               transformation(
                 extent={{40,-60},{60,-40}})));
 
-        BondGraph.bg_linear.elements.jone jone4(p=1, n=2)
+        BondGraph.BG_linear.Elements.Jone jone4(p=1, n=2)
           annotation (
             Placement(
               transformation(
                 extent={{140,40},{160,60}})));
 
-        BondGraph.bg_linear.elements.jzero jzero1(p=1, n=2)
+        BondGraph.BG_linear.Elements.Jzero jzero1(p=1, n=2)
           annotation (
             Placement(
               transformation(
                 extent={{-120,70},{-100,90}})));
 
-        BondGraph.bg_linear.elements.jzero jzero2(p=1, n=2)
+        BondGraph.BG_linear.Elements.Jzero jzero2(p=1, n=2)
           annotation (
             Placement(
               transformation(
                 extent={{-120,-90},{-100,-70}})));
 
-        BondGraph.bg_linear.elements.jzero jzero3(p=1, n=2)
+        BondGraph.BG_linear.Elements.Jzero jzero3(p=1, n=2)
           annotation (
             Placement(
               transformation(
@@ -4195,11 +4194,11 @@ masys")}));
                 lineColor={0,0,0},
                 fillColor={175,175,175},
                 fillPattern=FillPattern.Solid)}));
-      end cylinder_lin;
-    end cylinders;
+      end Cylinder_lin;
+    end Cylinders;
 
-    package pumps
-      model pump_lin
+    package Pumps
+      model Pump_lin
 
         parameter Real eta_hm = 0.87 "hydraulic mechanical efficiency factor";
         parameter Real eta_vol = 1 "volumetric efficiency factor";
@@ -4216,7 +4215,7 @@ masys")}));
         parameter Real f_mech_0 = 0 "initial rotational velosity of pump shaft";
         parameter Real e_mech_0 = 0 "initial torque of pump shaft";
 
-        BondGraph.interfaces.port_p port_p
+        BondGraph.Interfaces.Port_p port_p
           annotation (
             Placement(
               transformation(
@@ -4224,7 +4223,7 @@ masys")}));
               iconTransformation(
                 extent={{-100,-10},{-80,10}})));
 
-        BondGraph.interfaces.port_n port_n
+        BondGraph.Interfaces.Port_n port_n
           annotation (
             Placement(
               transformation(
@@ -4232,85 +4231,85 @@ masys")}));
               iconTransformation(
                 extent={{80,-10},{100,10}})));
 
-        BondGraph.bg_linear.sensors.sensor_p_e sensor_p_e1(gain=1 - eta_hm)
+        BondGraph.BG_linear.Sensors.Sensor_p_e sensor_p_e1(gain=1 - eta_hm)
           annotation (
             Placement(
               transformation(
                 extent={{-160,-10},{-140,10}})));
 
-        BondGraph.bg_linear.sensors.sensor_p_f sensor_p_f1(gain=1 - eta_vol)
+        BondGraph.BG_linear.Sensors.Sensor_p_f sensor_p_f1(gain=1 - eta_vol)
           annotation (
             Placement(
               transformation(
                 extent={{100,-10},{120,10}})));
 
-        BondGraph.bg_linear.elements.mse mse1
+        BondGraph.BG_linear.Elements.MSe mse1
           annotation (
             Placement(
               transformation(
                 extent={{-120,-50},{-100,-30}})));
 
-        BondGraph.bg_linear.elements.msf msf1
+        BondGraph.BG_linear.Elements.MSf msf1
           annotation (
             Placement(
               transformation(
                 extent={{140,-50},{160,-30}})));
 
-        BondGraph.bg_linear.elements.c c1(c=c_mech, e_0=e_mech_0)
+        BondGraph.BG_linear.Elements.C c1(c=c_mech, e_0=e_mech_0)
           annotation (
             Placement(
               transformation(
                 extent={{-40,30},{-20,50}})));
 
-        BondGraph.bg_linear.elements.i i1(i=i_mech, f_0=f_mech_0)
+        BondGraph.BG_linear.Elements.I i1(i=i_mech, f_0=f_mech_0)
           annotation (
             Placement(
               transformation(
                 extent={{-80,30},{-60,50}})));
 
-        BondGraph.bg_linear.elements.r r1(r=r_mech)
+        BondGraph.BG_linear.Elements.R r1(r=r_mech)
           annotation (
             Placement(
               transformation(
                 extent={{-80,-50},{-60,-30}})));
 
-        BondGraph.bg_linear.elements.r r2(r=r_leak)
+        BondGraph.BG_linear.Elements.R r2(r=r_leak)
           annotation (
             Placement(
               transformation(
                 extent={{60,-50},{80,-30}})));
 
-        BondGraph.bg_linear.elements.tf tf1(r=v_disp/(4*asin(1)))
+        BondGraph.BG_linear.Elements.TF tf1(r=v_disp/(4*asin(1)))
           annotation (
             Placement(
               transformation(
                 extent={{20,-10},{40,10}})));
 
-        BondGraph.bg_linear.elements.jone jone1(p=1, n=2)
+        BondGraph.BG_linear.Elements.Jone jone1(p=1, n=2)
           annotation (
             Placement(
               transformation(
                 extent={{-120,-10},{-100,10}})));
 
-        BondGraph.bg_linear.elements.jone jone2(p=1, n=3)
+        BondGraph.BG_linear.Elements.Jone jone2(p=1, n=3)
           annotation (
             Placement(
               transformation(
                 extent={{-80,-10},{-60,10}})));
 
-        BondGraph.bg_linear.elements.jzero jzero1(n=2, p=1)
+        BondGraph.BG_linear.Elements.Jzero jzero1(n=2, p=1)
           annotation (
             Placement(
               transformation(
                 extent={{-40,-10},{-20,10}})));
 
-        BondGraph.bg_linear.elements.jzero jzero2(n=2, p=1)
+        BondGraph.BG_linear.Elements.Jzero jzero2(n=2, p=1)
           annotation (
             Placement(
               transformation(
                 extent={{60,-10},{80,10}})));
 
-        BondGraph.bg_linear.elements.jzero jzero3(n=2, p=1)
+        BondGraph.BG_linear.Elements.Jzero jzero3(n=2, p=1)
           annotation (
             Placement(
               transformation(
@@ -4408,15 +4407,15 @@ masys")}));
                 lineColor={0,0,0},
                 textString="pump
 lin")}));
-      end pump_lin;
-    end pumps;
-  end examples;
+      end Pump_lin;
+    end Pumps;
+  end Examples;
 
-  package blocks
+  package Blocks
 
-    block const "constant matrix"
+    block Const "constant matrix"
 
-      BondGraph.interfaces.port_out port_out[size(c, 1),size(c, 2)]
+      BondGraph.Interfaces.Port_out port_out[size(c, 1),size(c, 2)]
         annotation (
           Placement(
             transformation(
@@ -4430,7 +4429,7 @@ lin")}));
       annotation (
         Icon(
           graphics={Ellipse(
-              extent={{-98,100},{102,-100}},
+              extent={{-100,100},{100,-100}},
               fillColor={51,249,65},
               fillPattern=FillPattern.Solid,
               lineColor={0,0,0}), Text(
@@ -4440,19 +4439,19 @@ lin")}));
               fillPattern=FillPattern.Solid,
               lineColor={0,0,0},
               textString="const")}));
-    end const;
+    end Const;
 
-    block dis_der "dynamic element with discrete der(state)"
+    block Dis_der "dynamic element with discrete der(state)"
 
-      import BondGraph.functions.*;
+      import BondGraph.Functions.*;
 
-      BondGraph.interfaces.port_in port_in[size(x_der, 1)]
+      BondGraph.Interfaces.Port_in port_in[size(x_der, 1)]
         annotation (
           Placement(
             transformation(
               extent={{-10,80},{10,100}})));
 
-      BondGraph.interfaces.port_out port_out[size(x_der, 1)]
+      BondGraph.Interfaces.Port_out port_out[size(x_der, 1)]
         annotation (
           Placement(
             transformation(
@@ -4517,7 +4516,7 @@ lin")}));
       annotation (
         Icon(
           graphics={Ellipse(
-              extent={{-98,100},{102,-100}},
+              extent={{-100,100},{100,-100}},
               fillColor={51,249,65},
               fillPattern=FillPattern.Solid,
               lineColor={0,0,0}), Text(
@@ -4528,19 +4527,19 @@ lin")}));
               lineColor={0,0,0},
               textString="dis
 der")}));
-    end dis_der;
+    end Dis_der;
 
-    block dis_der_int "dynamic element with discrete der(state)"
+    block Dis_der_int "dynamic element with discrete der(state)"
 
-      import BondGraph.functions.*;
+      import BondGraph.Functions.*;
 
-      BondGraph.interfaces.port_in port_in[size(x_der, 1)]
+      BondGraph.Interfaces.Port_in port_in[size(x_der, 1)]
         annotation (
           Placement(
             transformation(
               extent={{-10,80},{10,100}})));
 
-      BondGraph.interfaces.port_out port_out[size(x_der, 1)]
+      BondGraph.Interfaces.Port_out port_out[size(x_der, 1)]
         annotation (
           Placement(
             transformation(
@@ -4607,7 +4606,7 @@ der")}));
       annotation (
         Icon(
           graphics={Ellipse(
-              extent={{-98,100},{102,-100}},
+              extent={{-100,100},{100,-100}},
               fillColor={51,249,65},
               fillPattern=FillPattern.Solid,
               lineColor={0,0,0}), Text(
@@ -4618,19 +4617,19 @@ der")}));
               lineColor={0,0,0},
               textString="dis
 der")}));
-    end dis_der_int;
+    end Dis_der_int;
 
-    block lin_sat "linear dynamic element with limited state and der(state)"
+    block Lin_sat "linear dynamic element with limited state and der(state)"
 
-      import BondGraph.functions.*;
+      import BondGraph.Functions.*;
 
-      BondGraph.interfaces.port_in port_in[size(b, 2)]
+      BondGraph.Interfaces.Port_in port_in[size(b, 2)]
         annotation (
           Placement(
             transformation(
               extent={{-10,80},{10,100}})));
 
-      BondGraph.interfaces.port_out port_out[size(b, 1)]
+      BondGraph.Interfaces.Port_out port_out[size(b, 1)]
         annotation (
           Placement(
             transformation(
@@ -4657,7 +4656,7 @@ der")}));
       annotation (
         Icon(
           graphics={Ellipse(
-              extent={{-98,100},{102,-100}},
+              extent={{-100,100},{100,-100}},
               fillColor={51,249,65},
               fillPattern=FillPattern.Solid,
               lineColor={0,0,0}), Text(
@@ -4668,19 +4667,19 @@ der")}));
               lineColor={0,0,0},
               textString="lin
 sat")}));
-    end lin_sat;
+    end Lin_sat;
 
-    block prop_sat "proportional element with limited state"
+    block Prop_sat "proportional element with limited state"
 
-      import BondGraph.functions.*;
+      import BondGraph.Functions.*;
 
-      BondGraph.interfaces.port_in port_in[size(b, 2)]
+      BondGraph.Interfaces.Port_in port_in[size(b, 2)]
         annotation (
           Placement(
             transformation(
               extent={{-10,80},{10,100}})));
 
-      BondGraph.interfaces.port_out port_out[size(b, 1)]
+      BondGraph.Interfaces.Port_out port_out[size(b, 1)]
         annotation (
           Placement(
             transformation(
@@ -4703,7 +4702,7 @@ sat")}));
       annotation (
         Icon(
           graphics={Ellipse(
-              extent={{-98,100},{102,-100}},
+              extent={{-100,100},{100,-100}},
               fillColor={51,249,65},
               fillPattern=FillPattern.Solid,
               lineColor={0,0,0}), Text(
@@ -4714,19 +4713,19 @@ sat")}));
               lineColor={0,0,0},
               textString="prop
 sat")}));
-    end prop_sat;
+    end Prop_sat;
 
-    block sig_c "control signal"
+    block Sig_c "control signal"
 
-      import BondGraph.functions.*;
+      import BondGraph.Functions.*;
 
-      BondGraph.interfaces.port_in port_in
+      BondGraph.Interfaces.Port_in port_in
         annotation (
           Placement(
             transformation(
               extent={{-10,80},{10,100}})));
 
-      BondGraph.interfaces.port_out port_out[size(p_x, 1)]
+      BondGraph.Interfaces.Port_out port_out[size(p_x, 1)]
         annotation (
           Placement(
             transformation(
@@ -4757,7 +4756,7 @@ sat")}));
       annotation (
         Icon(
           graphics={Ellipse(
-              extent={{-98,100},{102,-100}},
+              extent={{-100,100},{100,-100}},
               fillColor={51,249,65},
               fillPattern=FillPattern.Solid,
               lineColor={0,0,0}), Text(
@@ -4768,17 +4767,17 @@ sat")}));
               lineColor={0,0,0},
               textString="sig
 c")}));
-    end sig_c;
+    end Sig_c;
 
-    block sig_cs "control signal of specialized characteristic"
+    block Sig_cs "control signal of specialized characteristic"
 
-      BondGraph.interfaces.port_in port_in
+      BondGraph.Interfaces.Port_in port_in
         annotation (
           Placement(
             transformation(
               extent={{-10,80},{10,100}})));
 
-      BondGraph.interfaces.port_out port_out
+      BondGraph.Interfaces.Port_out port_out
         annotation (
           Placement(
             transformation(
@@ -4812,7 +4811,7 @@ c")}));
       annotation (
         Icon(
           graphics={Ellipse(
-              extent={{-98,100},{102,-100}},
+              extent={{-100,100},{100,-100}},
               fillColor={51,249,65},
               fillPattern=FillPattern.Solid,
               lineColor={0,0,0}), Text(
@@ -4824,10 +4823,10 @@ c")}));
               textString="sig
 cs
 ")}));
-    end sig_cs;
-  end blocks;
+    end Sig_cs;
+  end Blocks;
 
-  package functions
+  package Functions
 
     function saturation
 
@@ -4912,11 +4911,11 @@ cs
       x_sat_d3 := 0;
 
     end saturation_d3;
-  end functions;
+  end Functions;
 
-  package interfaces
+  package Interfaces
 
-    connector port
+    connector Port
       Real e;
       Real f;
 
@@ -4927,9 +4926,9 @@ cs
               fillColor={135,135,135},
               fillPattern=FillPattern.Solid,
               lineColor={0,0,0})}));
-    end port;
+    end Port;
 
-    connector port_in = input Real
+    connector Port_in = input Real
       annotation (
         Icon(
           graphics={Polygon(
@@ -4938,7 +4937,7 @@ cs
             smooth=Smooth.None,
             fillColor={0,0,255},
             fillPattern=FillPattern.Solid)}));
-    connector port_n
+    connector Port_n
       Real e;
       Real f;
 
@@ -4949,9 +4948,9 @@ cs
               lineColor={0,0,0},
               fillColor={255,0,0},
               fillPattern=FillPattern.Solid)}));
-    end port_n;
+    end Port_n;
 
-    connector port_out = output Real "output"
+    connector Port_out = output Real "output"
       annotation (
         Icon(
           graphics={Polygon(
@@ -4960,7 +4959,7 @@ cs
             smooth=Smooth.None,
             fillColor={255,0,0},
             fillPattern=FillPattern.Solid)}));
-    connector port_p
+    connector Port_p
       Real e;
       Real f;
 
@@ -4971,8 +4970,8 @@ cs
               lineColor={0,0,0},
               fillColor={0,0,255},
               fillPattern=FillPattern.Solid)}));
-    end port_p;
-  end interfaces;
+    end Port_p;
+  end Interfaces;
   annotation (
     Icon(
       graphics),                            uses(Modelica(version="3.2")));
